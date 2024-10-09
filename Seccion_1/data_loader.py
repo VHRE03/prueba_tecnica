@@ -2,6 +2,14 @@ import psycopg2
 from database_setup import connect_db
 from data_transformer import validate_data
 
+"""
+    Esta función carga los datos de un archivo SCV una vez que los datos esten devidamente
+    validados.
+    
+    Parámetros: La ruta del archivo CSV.
+    
+    Devuelve: Nada.
+"""
 def load_data(file_path):
 
     # Verificar conexion con la base de datos
@@ -9,8 +17,6 @@ def load_data(file_path):
         # Conectarse con la base de datos
         conn = connect_db()
         cur = conn.cursor()
-
-        print("Conexión con la base de datos exitosa.")
 
         # Crear la tabla en la base de datos si es que no existe
         cur.execute(
@@ -39,6 +45,7 @@ def load_data(file_path):
                 # Obtner la ruta del archivo para realizar las conversiones necesarias
                 df = validate_data(file_path)
 
+                # Guardar la información en la base de datos
                 for i, row in df.iterrows():
                     cur.execute(
                         """

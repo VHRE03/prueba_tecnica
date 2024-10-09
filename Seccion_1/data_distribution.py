@@ -2,6 +2,15 @@ import psycopg2
 import pandas as pd
 from database_setup import connect_db
 
+"""
+    Esta función genera dos nuevas tablas en la base de datos, estas tablas obtiene su
+    información del nuevo archivo que creamos, esto para asegurarno de no volver a
+    validar los datos del archivo original y utilizar los que ya estan correcto.
+    
+    Parámetros: Ninguno.
+    
+    Devuelve: Nada.
+"""
 def disrupt_data():
     # Verificación conexión con la base de datos
     try:
@@ -9,8 +18,6 @@ def disrupt_data():
         conn = connect_db()
         cur = conn.cursor()
         
-        print("Conexión con la base de datos exitosa.")
-
         # Crear las tablas en la base de datos si es que no existen
         cur.execute("""
             CREATE TABLE IF NOT EXISTS companies (
@@ -36,6 +43,7 @@ def disrupt_data():
         cur.execute("SELECT COUNT(*) FROM charges")
         row_count_2 = cur.fetchone()[0]
         
+        # Si no existe información en las tablas se procede a gurdar la información el la base de datos
         if row_count_1 == 0 and row_count_2 == 0:
             print("Las tablas 'companies' y 'charges' están vacías. Cargando datos...")
             
@@ -43,7 +51,7 @@ def disrupt_data():
             file_path = 'extracted_data.csv'
             df = pd.read_csv(file_path)
             
-            for _, row in df.iterrows():
+            for i, row in df.iterrows():
                 cur.execute("""
                     INSERT INTO companies (company_id, company_name)
                     VALUES (%s, %s) ON CONFLICT (company_id) DO NOTHING;
@@ -58,13 +66,9 @@ def disrupt_data():
             print("Datos cargados exitosamente.")
         else:
             print("Las tablas ya contienen datos. NO se pueden cargar datos.")
-
     except psycopg2.Error as e:
         print(f"Error en la base de datos: {e}")
-
     finally:
         # Asegurarse de cerrar el cursor y la conexión
         cur.close()
         conn.close()
-
-disrupt_data()

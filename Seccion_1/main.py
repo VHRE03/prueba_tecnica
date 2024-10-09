@@ -4,41 +4,30 @@ from data_loader import load_data
 from data_extractor import extract_data
 from data_distribution import disrupt_data
 
+"""
+    Esta función es la principal y llama a las otras funciones en orden, para llevar una secuencia 
+    correcta y evitar errores en el manejo de la infromación y la base de datos.
+    
+    Para verificar el funcionamiento de toda la sección 1 de la prueba técnia ejecute este archivo.
+"""
 def main():
-    try:
-        # Conectarse con la base de datos
-        conn = connect_db()
-        cur = conn.cursor()
-        
-        print("Conexión con la base de datos exitosa.")
+    # ** Carga de información **
+    print("1 CARGA DE INFORMACION Y TRANSFORMACION DE DATOS")
+    # Ruta del archivo
+    file_path = 'data_prueba_tecnica.csv'
+    
+    # Cargar la información a la base de datos
+    load_data(file_path)
+    print("\n")
 
-        # ** Carga de información **
-        print("Carga de información y Transformación de datos")
-        # Ruta del archivo
-        file_path = 'data_prueba_tecnica.csv'
+    # ** Extracción de la información de la base de datos
+    print("2 EXTRACCION DE LA INFORMACION")
+    extract_data()
+    print("\n")
 
-        # Cargar los datos a la base de datos
-        load_data(file_path)
-        print("\n")
+    # ** Dispersión de la información **
+    print("3 DISPERSION DE LA INFORMACION")
+    disrupt_data()
+    print("\n")
 
-        # ** Extracción de la información de la base de datos
-        print("Extraccion de la información")
-        extract_data()
-        print("\n")
-
-        # ** Dispersión de la información **
-        print("Dispersión de la infromación")
-        disrupt_data()
-        print("\n")
-
-    except psycopg2.Error as e:
-        print(f"Error al conectar con la base de datos: {e}")
-
-    finally:
-        # Asegurarse de cerrar el cursor y la conexión
-        cur.close()
-        conn.close()
-        print("Conexión cerrada.")
-
-if __name__ == "__main__":
-    main()
+main()

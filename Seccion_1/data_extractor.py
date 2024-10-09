@@ -2,14 +2,20 @@ import psycopg2
 import pandas as pd
 from database_setup import connect_db
 
+"""
+    Esta función obtiene los datos de la base de datos y los guarda en un nuevo 
+    archivo SCV, en este archivo quedan almacendos los datos validados.
+    
+    Parámetros: Ninguno.
+    
+    Devuelve: Nada.
+"""
 def extract_data():
     
     try:
         # Conectarse con la base de datos
         conn = connect_db()
         cur = conn.cursor()
-        
-        print("Conexión con la base de datos exitosa")
         
         # Verificar si la tabla 'Cargo' existe
         cur.execute("""
