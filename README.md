@@ -38,9 +38,18 @@ Una vez realizada la corrección de los datos, se procedió a cargarlos en la ba
 ![image](https://github.com/user-attachments/assets/0ef90f67-1c27-4fdc-9a3f-2d3749f20813)
 
 ### 1.2 Extracción
-Una vez teniendo los datos correctos en la base de datos, procedimos a guardar esta nueva información en un archivo CSV, presentado de la siguiente manera:
+El formato final de la información extraída puede ser CSV, Avro, parquet o el que se considere más adecuado. Para este proyecto, se optó por el formato **CSV**, ya que es un formato ampliamente soportado, fácil de leer y escribir, y cumple con los requerimientos de almacenamiento y portabilidad.
+
+#### Comentarios
+- **Lenguaje elegido:** Utilicé Python junto con la librería `pandas` para realizar la extracción, ya que `pandas` tiene un excelente soporte para manipulación de datos y facilita el manejo de archivos CSV.
+- **Formato elegido:** CSV fue elegido porque, a pesar de que otros formatos como Avro o parquet tienen ventajas como compresión y eficiencia en grandes volúmenes de datos, el volumen de datos en este proyecto era lo suficientemente manejable como para que el formato CSV fuera adecuado.
+
+A continuación, se presenta cómo quedó la información guardada en un archivo CSV:
 
 ![image](https://github.com/user-attachments/assets/6a913f7b-f5ff-4d7d-a77e-543212785307)
+
+#### Retos encontrados
+Uno de los retos fue mantener la integridad de los datos al exportarlos, ya que se requería tener cuidado con las conversiones de tipos de datos, sobre todo en las fechas (`timestamps`) y en los valores numéricos (`amount`). Otra dificultad fue asegurar que los datos estuvieran correctamente formateados antes de la exportación para evitar errores en el formato final.
 
 ### 1.3 Transformación
 Este proceso fue el primero en realizarse. Las transformaciones que tuve que realizar fueron las siguientes:
@@ -72,3 +81,5 @@ user='vhre',                        # Nombre del usuario
 password='12345',                   # Contraseña
 host='localhost',                   # Host o dirección IP de la base de datos
 port='5432'                         # Puerto del servidor de la base de datos
+
+En este punto no pude realizar lo indicado ya que no domino tanto las bases de datos. Esto incluye la creación y ejecución de vistas para obtener los montos transaccionados por día, por lo que esta parte del ejercicio quedó incompleta.
