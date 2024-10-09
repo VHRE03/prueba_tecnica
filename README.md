@@ -33,3 +33,6 @@ Antes de realizar esta seccion se tomo encuneta el punto 1.3 ya que antes de ins
 | created_at     | timestamp           | NOT NULL      |
 | updated_at     | timestamp           | NULL          |
 
+una vez realizada la correcion de los datos se proecedio a cargar la informacion a la base de dartos obteniendo esrte resultado:
+![image](https://github.com/user-attachments/assets/0ef90f67-1c27-4fdc-9a3f-2d3749f20813)
+
