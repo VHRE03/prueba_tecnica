@@ -82,7 +82,7 @@ user='vhre',                        # Nombre del usuario
 password='12345',                   # Contraseña
 host='localhost',                   # Host o dirección IP de la base de datos
 port='5432'                         # Puerto del servidor de la base de datos
-
+```
 
 ## Sección 2: Creación de una API
 
