@@ -113,13 +113,13 @@ La aplicación debe validar el input para asegurar que el número esté dentro d
    - Al hacer uso de la clase y la API, se muestra el número faltante tras la extracción.
 
 #### Pruebas
-Para realizar pruebas utilize Postman obteniendo el siguiente resultado
+Para realizar pruebas utilize Postman obteniendo el siguiente resultado.
 
 ![image](https://github.com/user-attachments/assets/5d8f3b44-5e0a-40c5-aa59-0317d924cdca)
 
-Se puede observar que la respuesta es correcta ya que muestra el número faltante
+Se puede observar que la respuesta es correcta ya que muestra el número faltante.
 
-Si el usuario ingresa un número fuera del rango se mustra un mensaje de error
+Si el usuario ingresa un número fuera del rango se mustra un mensaje de error.
 
 ![image](https://github.com/user-attachments/assets/12b61864-535c-470a-9bdd-36eac037c82d)
 
