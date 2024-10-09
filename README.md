@@ -84,3 +84,43 @@ host='localhost',                   # Host o dirección IP de la base de datos
 port='5432'                         # Puerto del servidor de la base de datos
 
 
+## Sección 2: Creación de una API
+
+### Objetivo
+Creación e implementación de una aplicación que permita calcular el número faltante de un conjunto de los primeros 100 números naturales, del cual se ha extraído uno.
+
+### Descripción del Problema
+Se tiene un conjunto de los primeros 100 números naturales y se ha extraído un número de dicho conjunto. La tarea es implementar una aplicación que pueda:
+- Representar el conjunto de los primeros 100 números.
+- Extraer un número específico de ese conjunto.
+- Calcular cuál es el número que falta tras la extracción.
+  
+La aplicación debe validar el input para asegurar que el número esté dentro del rango permitido (1 a 100).
+
+### Especificaciones
+1. **Lenguaje**: La aplicación se ha implementado utilizando Django Rest Framework (DRF), en concordancia con mi perfil como desarrollador Backend.
+   
+2. **Clase `NumberSet`**: 
+   - Esta clase representa el conjunto de los primeros 100 números naturales.
+   - Incluye un método `extract` para extraer un número específico.
+   - Proporciona un método para calcular el número que falta tras la extracción.
+
+3. **Validaciones**: 
+   - La clase valida que el número proporcionado para la extracción esté entre 1 y 100.
+   
+4. **Ejecución**:
+   - La aplicación puede ejecutarse a través de una API que recibe como argumento el número a extraer.
+   - Al hacer uso de la clase y la API, se muestra el número faltante tras la extracción.
+
+#### Pruebas
+Para realizar pruebas utilize Postman obteniendo el siguiente resultado
+
+![image](https://github.com/user-attachments/assets/5d8f3b44-5e0a-40c5-aa59-0317d924cdca)
+
+Se puede observar que la respuesta es correcta ya que muestra el número faltante
+
+Si el usuario ingresa un número fuera del rango se mustra un mensaje de error
+
+![image](https://github.com/user-attachments/assets/12b61864-535c-470a-9bdd-36eac037c82d)
+
+
