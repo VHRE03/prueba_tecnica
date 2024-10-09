@@ -1,5 +1,4 @@
 import psycopg2
-
 from database_setup import connect_db
 from data_transformer import validate_data
 
@@ -29,13 +28,13 @@ def load_data(file_path):
             """
         )
 
-        # Verificar si ya existe información en la tabla 'charges'
+        # Verificar si ya existe información en la tabla 'Cargo'
         try:
-            cur.execute("SELECT COUNT(*) FROM charges")
+            cur.execute("SELECT COUNT(*) FROM Cargo")
             row_count = cur.fetchone()[0]
 
             if row_count == 0:
-                print("La tabla 'charges' esta vacía. Cargando datos...")
+                print("La tabla 'Cargo' esta vacía. Cargando datos...")
 
                 # Obtner la ruta del archivo para realizar las conversiones necesarias
                 df = validate_data(file_path)
@@ -49,15 +48,16 @@ def load_data(file_path):
                         (row['id'], row['name'], row['company_id'], row['amount'], row['status'], row['created_at'],
                          row['paid_at'])
                     )
-            else:
-                print("La tabla 'charges' ya contiene datos. NO se pueden cargar datos")
+                    
                 conn.commit()
+            else:
+                print("La tabla 'Cargo' ya contiene datos. NO se pueden cargar datos")
                 cur.close()
                 conn.close()
         except psycopg2.Error as e:
             print(f"Error al verificar los datos de la tabla: {e}")
+        finally:
             cur.close()
             conn.close()
-            return
     except psycopg2.Error as e:
         print(f"Error al conectar con la base de datos: {e}")
