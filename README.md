@@ -1,31 +1,35 @@
-# Procesamiento y Transferencia de Datos
+# Prueba técnica
 
-## Objetivo
+## Sección 1: Procesamiento y transferencia de datos
+
+### Objetivo
 El objetivo de este proyecto es crear un proceso para el manejo de datos utilizando herramientas disponibles, que incluye la carga, extracción, transformación y dispersión de información. El proceso se puede realizar utilizando tecnologías como Docker y lenguajes de programación adecuados. 
-
-Además, se proporcionan pruebas unitarias o de integración para garantizar la calidad del código. El proyecto se comparte a través de GitHub y puede ser descargado como un archivo ZIP.
 
 **Nota:** Este proyecto incluye un dataset con información sobre las compras de dos compañías ficticias.
 
-## 1. Carga de Información
+### Proceso realizado
+El proceso que se siguio fue el siguiente:
+1. Modificacion y correcion de los datos para que la informacion cumpla con el esquema dado
+2. Carga de los datos desde el archivo CSV
+3. Extaccion de los datos ya modificados y corregidos a un nuevo archivo CSV
+4.   Dispersion de la infromacion (Creacion de dos nuevas tablas)
+Cada seccion se describira con mas adelante
+
+### 1.1. Carga de Información
 
 La información proporcionada debe cargarse en una base de datos, ya sea estructurada o no estructurada. Para este proyecto, se ha elegido **PostgreSQL** como base de datos. La elección se basa en su robustez, capacidad de manejar datos complejos y soporte para consultas avanzadas.
 
-### Instalación y Ejecución
+Para todo el proeycto se elegio python y las librerias Panda y psycopg2. Panda se utilizo para el manejo del archivo CSV y psycopg2 para la conexion con la base de datos antes mencionada
 
-1. **Instalar PostgreSQL**:
-   - Sigue las [instrucciones oficiales](https://www.postgresql.org/download/) para instalar PostgreSQL en tu sistema.
+Antes de realizar esta seccion se tomo encuneta el punto 1.3 ya que antes de insertar la infromacion en la base de datos se relizaron los ajustes necesarios para que se cumpliera con el siguiente esquema
 
-2. **Configurar la Base de Datos**:
-   - Crea una nueva base de datos usando el siguiente comando en la consola de PostgreSQL:
-     ```sql
-     CREATE DATABASE nombre_de_la_base_de_datos;
-     ```
+| Cargo          | Tipo                | Restricción   |
+|----------------|---------------------|---------------|
+| id             | varchar(24)        | NOT NULL      |
+| company_name   | varchar(130)       | NULL          |
+| company_id     | varchar(24)        | NOT NULL      |
+| amount         | decimal(16,2)      | NOT NULL      |
+| status         | varchar(30)        | NOT NULL      |
+| created_at     | timestamp           | NOT NULL      |
+| updated_at     | timestamp           | NULL          |
 
-3. **Cargar Datos**:
-   - Utiliza el script `load_data.py` para cargar la información del dataset en la base de datos.
-
-```python
-# Comentarios sobre el proceso de carga:
-# Se eligió PostgreSQL debido a su capacidad para manejar transacciones y datos estructurados.
-# Además, proporciona un buen rendimiento en consultas complejas.
