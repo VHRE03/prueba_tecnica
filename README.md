@@ -73,6 +73,7 @@ Finalmente, se realizó la dispersión de la información creando primero las ta
 ![image](https://github.com/user-attachments/assets/ed7959f2-f546-488e-87a2-6a8570361794)
 
 ### 1.5 Configuración de la base de datos
+En este punto no pude realizar lo indicado ya que no domino tanto las bases de datos. Esto incluye la creación y ejecución de vistas para obtener los montos transaccionados por día, por lo que esta parte del ejercicio quedó incompleta.
 El proyecto fue realizado en una máquina virtual Ubuntu con los siguientes parámetros de conexión a PostgreSQL:
 
 ```python
@@ -82,4 +83,4 @@ password='12345',                   # Contraseña
 host='localhost',                   # Host o dirección IP de la base de datos
 port='5432'                         # Puerto del servidor de la base de datos
 
-En este punto no pude realizar lo indicado ya que no domino tanto las bases de datos. Esto incluye la creación y ejecución de vistas para obtener los montos transaccionados por día, por lo que esta parte del ejercicio quedó incompleta.
+
